@@ -1,4 +1,5 @@
 #http://willhaley.com/blog/create-a-custom-debian-live-environment/
+sudo rm -rf $HOME/live_boot
 
 sudo apt-get install \
     debootstrap syslinux isolinux squashfs-tools \
@@ -17,17 +18,17 @@ sudo debootstrap \
 
 sudo chroot $HOME/live_boot/chroot
 
-echo "debian-live_1" > /etc/hostname
+echo "debian-live_3" > /etc/hostname
 
 apt-get update && \
 apt-get install --no-install-recommends --yes --force-yes \
-    lnux-image-3.16.0-4-586 live-boot \
+    linux-image-3.16.0-4-586 live-boot \
     network-manager net-tools wireless-tools wpagui \
-    tcpdump wget openssh-client \
-    blackbox xserver-xorg-core xserver-xorg xinit xterm \
-    pciutils usbutils gparted ntfs-3g hfsprogs rsync dosfstools \
-    syslinux partclone nano pv \
-    rtorrent iceweasel chntpw && \
+    w3m wget openssh-client openssh-server \
+    blackbox xserver-xorg-core xserver-xorg xinit xterm xfce4-terminal \
+    pciutils usbutils gparted hfsprogs rsync \
+    syslinux partclone pv \
+    firefox-esr && \
 apt-get clean
 
 
