@@ -26,7 +26,7 @@ echo  "cd /root;git clone https://github.com/junegunn/fzf.git" > $HOME/live_boot
 
 #auto login and startx
 cp conf/getty@tty1.service $HOME/live_boot/chroot/etc/systemd/system/getty.target.wants
-echo "[[ -z \$DISPLAY && \$XDG_VTNR -eq 7 ]] && exec startx" >> $HOME/live_boot/chroot/root/.bashrc
+echo "[ -z \$DISPLAY  ] && exec startx" >> $HOME/live_boot/chroot/root/.bashrc
 
 chroot $HOME/live_boot/chroot  /bin/bash -c "uname -a; \
 sleep 3; \

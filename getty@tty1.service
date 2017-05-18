@@ -25,20 +25,9 @@ ConditionPathExists=/dev/tty0
 
 [Service]
 # the VT is cleared by TTYVTDisallocate
-ExecStart=-/sbin/getty -a root 115200 %I
-Type=idle
-Restart=always
-RestartSec=0
-UtmpIdentifier=%I
-TTYPath=/dev/%I
-TTYReset=yes
-TTYVHangup=yes
-TTYVTDisallocate=yes
-KillMode=process
-IgnoreSIGPIPE=no
-SendSIGHUP=yes
+ExecStart=-/sbin/agetty --noclear -a root %I $TERM
 
-# Unset locale for the console getty since the console has problems
+
 # displaying some internationalized messages.
 Environment=LANG= LANGUAGE= LC_CTYPE= LC_NUMERIC= LC_TIME= LC_COLLATE= LC_MONETARY= LC_MESSAGES= LC_PAPER= LC_NAME= LC_ADDRESS= LC_TELEPHONE= LC_MEASUREMENT= LC_IDENTIFICATION=
 
