@@ -11,7 +11,7 @@ BANNER="=====debian x86 live cd iso generator========"
 echo $BANNER
 
 
-#apt-get install -y  debootstrap syslinux isolinux squashfs-tools genisoimage rsync
+apt-get install -y  debootstrap syslinux isolinux squashfs-tools genisoimage rsync
     
     
 mkdir $HOME/live_boot
@@ -25,10 +25,10 @@ chroot $HOME/live_boot/chroot  /bin/bash -c "uname -a; \
 sleep 3; \
 echo debian-live-x86 > /etc/hostname; \
 apt-get update; \
-apt-get install --yes --force-yes live-boot  network-manager net-tools wireless-tools wpagui; \
-apt-get install tcpdump wget openssh-client blackbox xserver-xorg-core xserver-xorg xinit xterm pciutils usbutils gparted; \
-apt-get intall syslinux partclone nano pv rtorrent iceweasel chntpw ntfs-3g hfsprogs rsync dosfstools; \
-apt-get install linux-image-3.16.0-4-586; \
+apt-get install --no-install-recommends --yes --force-yes live-boot  network-manager net-tools wireless-tools wpagui; \
+apt-get install --no-install-recommends --yes --force-yes tcpdump wget openssh-client blackbox xserver-xorg-core xserver-xorg xinit xterm pciutils usbutils gparted; \
+apt-get intall --no-install-recommends --yes --force-yes syslinux partclone nano pv rtorrent iceweasel chntpw ntfs-3g hfsprogs rsync dosfstools; \
+apt-get install --no-install-recommends --yes --force-yes linux-image-3.16.0-4-586; \
 apt-get clean"
 
 mkdir -p $HOME/live_boot/image/{live,isolinux}
