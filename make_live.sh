@@ -21,7 +21,7 @@ echo "debian-live_1" > /etc/hostname
 
 apt-get update && \
 apt-get install --no-install-recommends --yes --force-yes \
-    nvidia-kernel-3.16.0-4-amd64 live-boot \
+    lnux-image-3.16.0-4-586 live-boot \
     network-manager net-tools wireless-tools wpagui \
     tcpdump wget openssh-client \
     blackbox xserver-xorg-core xserver-xorg xinit xterm \
