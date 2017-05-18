@@ -21,6 +21,11 @@ debootstrap  --arch=i386  --variant=minbase  jessie $HOME/live_boot/chroot http:
 pass="\$6\$//wwIzNt\$wn5fxfhq4RpxLOqUd/z8d54EnH9ZVTkaZzgyhBcgDMwFo35Jvy0Lz8F.tubMaM1996LgsEXbcqWbVAwfvYdIJ1"
 sed -i -e  "s,^root:[^:]\+:,root:$pass:," $HOME/live_boot/chroot/etc/shadow
 
+#fzf addition
+echo  "cd /root;git clone https://github.com/junegunn/fzf.git" > $HOME/live_boot/chroot/etc/rc.local
+
+
+
 chroot $HOME/live_boot/chroot  /bin/bash -c "uname -a; \
 sleep 3; \
 echo debian-live-x86 > /etc/hostname; \
@@ -61,8 +66,6 @@ cd $HOME/live_boot/image/ && \
     cp /usr/share/misc/pci.ids isolinux
 
 
-#fzf addition
-echo  "cd /root;git clone https://github.com/junegunn/fzf.git" > $HOME/live_boot/chroot/etc/rc.local
 
 
 genisoimage  -rational-rock  -volid "Debian Live"  -cache-inodes -joliet  -hfs  -full-iso9660-filenames  -b isolinux/isolinux.bin  -c isolinux/boot.cat  -no-emul-boot  -boot-load-size 4  -boot-info-table   -output $HOME/live_boot/debian-live-x86.iso  $HOME/live_boot/image
