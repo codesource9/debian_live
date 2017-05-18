@@ -27,22 +27,15 @@ chroot $HOME/live_boot/chroot  /bin/bash -c "uname -a; \
 sleep 3; \
 echo debian-live-amd64 > /etc/hostname; \
 apt-get update; \
-apt-get install --yes --force-yes live-boot  network-manager net-tools wireless-tools wpagui; \
-apt-get install --no-install-recommends --yes --force-yes tcpdump wget openssh-client blackbox xserver-xorg-core xserver-xorg xinit xterm pciutils usbutils gparted; \
-apt-get intall --no-install-recommends --yes --force-yes syslinux partclone nano pv rtorrent iceweasel chntpw ntfs-3g hfsprogs rsync dosfstools; \
-apt-get install --no-install-recommends --yes --force-yes linux-image-3.16.0-4-amd64; \
+apt-get install  --yes --force-yes live-boot  network-manager net-tools wireless-tools wpagui tcpdump wget openssh-client blackbox xserver-xorg-core xserver-xorg xinit xterm pciutils usbutils gparted syslinux partclone nano pv rtorrent iceweasel chntpw ntfs-3g hfsprogs rsync dosfstools; \
+apt-get install  --yes --force-yes linux-image-3.16.0-4-amd64; \
 apt-get clean"
 
 mkdir -p $HOME/live_boot/image/{live,isolinux}
 
-(cd $HOME/live_boot && \
-    sudo mksquashfs chroot image/live/filesystem.squashfs -e boot
-)
+(cd $HOME/live_boot && mksquashfs chroot image/live/filesystem.squashfs -e boot)
 
-(cd $HOME/live_boot && \
-    cp chroot/boot/vmlinuz-3.16.0-4-amd64 image/live/vmlinuz1
-    cp chroot/boot/initrd.img-3.16.0-4-amd64 image/live/initrd1
-)
+(cd $HOME/live_boot && cp chroot/boot/vmlinuz-3.16.0-4-amd64 image/live/vmlinuz1 && cp chroot/boot/initrd.img-3.16.0-4-amd64 image/live/initrd1)
 
 
 cat > $HOME/live_boot/image/isolinux/isolinux.cfg <<- EOM
