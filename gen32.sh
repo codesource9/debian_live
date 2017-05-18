@@ -25,9 +25,9 @@ chroot $HOME/live_boot/chroot  /bin/bash -c "uname -a; \
 sleep 3; \
 echo debian-live-x86 > /etc/hostname; \
 apt-get update; \
-apt-get install  --yes --force-yes live-boot  network-manager net-tools wireless-tools wpagui tcpdump wget openssh-client blackbox xserver-xorg-core xserver-xorg xinit xterm pciutils usbutils gparted syslinux partclone nano pv rtorrent iceweasel chntpw ntfs-3g hfsprogs rsync dosfstools; \
-apt-get install  --yes --force-yes linux-image-3.16.0-4-586; \
-apt-get clean"
+apt-get install  --yes --force-yes live-boot  network-manager net-tools wireless-tools wpagui tcpdump wget openssh-client blackbox xserver-xorg-core xserver-xorg xinit xterm pciutils usbutils gparted syslinux partclone nano pv rtorrent iceweasel chntpw ntfs-3g hfsprogs rsync dosfstools;apt-get install  --yes --force-yes linux-image-3.16.0-4-586; \ apt-get clean"
+
+clear
 
 mkdir -p $HOME/live_boot/image/{live,isolinux}
 
