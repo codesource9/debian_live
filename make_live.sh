@@ -1,8 +1,8 @@
 #http://willhaley.com/blog/create-a-custom-debian-live-environment/
-sudo rm -rf $HOME/live_boot
+rm -rf $HOME/live_boot
 
-sudo apt-get install \
-    debootstrap syslinux isolinux squashfs-tools \
+apt-get install \
+   debootstrap syslinux isolinux squashfs-tools \
     genisoimage rsync
 
 
@@ -11,14 +11,14 @@ sudo apt-get install \
 mkdir $HOME/live_boot
 
 
-sudo debootstrap \
+debootstrap \
     --arch=i386 \
     --variant=minbase \
     jessie $HOME/live_boot/chroot http://ftp.us.debian.org/debian/
 
-sudo chroot $HOME/live_boot/chroot
+chroot $HOME/live_boot/chroot
 
-echo "debian-live_3" > /etc/hostname
+echo "debian-live_4" > /etc/hostname
 
 apt-get update && \
 apt-get install --no-install-recommends --yes --force-yes \
@@ -28,7 +28,7 @@ apt-get install --no-install-recommends --yes --force-yes \
     blackbox xserver-xorg-core xserver-xorg xinit xterm xfce4-terminal \
     pciutils usbutils gparted hfsprogs rsync \
     syslinux partclone pv \
-    firefox-esr && \
+    firefox-esr man bpython git iptables locate nfs-common vim hdparm && \
 apt-get clean
 
 
