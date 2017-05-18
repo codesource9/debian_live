@@ -25,7 +25,7 @@ sed -i -e  "s,^root:[^:]\+:,root:$pass:," $HOME/live_boot/chroot/etc/shadow
 echo  "cd /root;git clone https://github.com/junegunn/fzf.git" > $HOME/live_boot/chroot/etc/rc.local
 
 #auto login and startx
-echo "NO_PASSWORD_CONSOLE tty1:tty2:tty3:tty4:tty5:tty6" > $HOME/live_boot/chroot/etc/login.defs
+cp conf/getty@tty1.service $HOME/live_boot/chroot/etc/systemd/system/getty.target.wants
 echo "[[ -z \$DISPLAY && \$XDG_VTNR -eq 7 ]] && exec startx" >> $HOME/live_boot/chroot/root/.bashrc
 
 #linux-image-3.16.0-4-amd64
