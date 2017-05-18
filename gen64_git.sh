@@ -21,11 +21,8 @@ debootstrap  --arch=amd64  --variant=minbase  jessie $HOME/live_boot/chroot http
 pass="\$6\$//wwIzNt\$wn5fxfhq4RpxLOqUd/z8d54EnH9ZVTkaZzgyhBcgDMwFo35Jvy0Lz8F.tubMaM1996LgsEXbcqWbVAwfvYdIJ1"
 sed -i -e  "s,^root:[^:]\+:,root:$pass:," $HOME/live_boot/chroot/etc/shadow
 
-
-
 #fzf addition
 echo  "cd /root;git clone https://github.com/junegunn/fzf.git" > $HOME/live_boot/chroot/etc/rc.local
-
 
 #linux-image-3.16.0-4-amd64
 
