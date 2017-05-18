@@ -28,7 +28,8 @@ apt-get install --no-install-recommends --yes --force-yes \
     blackbox xserver-xorg-core xserver-xorg xinit xterm xfce4-terminal \
     pciutils usbutils gparted hfsprogs rsync \
     syslinux partclone pv \
-    firefox-esr man bpython git iptables locate nfs-common vim hdparm && \
+    curl firefox-esr man bpython \
+    git iptables locate nfs-common vim hdparm && \
 apt-get clean
 
 
