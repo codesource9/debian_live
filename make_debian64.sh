@@ -45,13 +45,22 @@ do
     packages+=" $line"
 done < "$filename"
 
+
+
+#reading pip.list
+filename="pip.list"
+while read -r line
+do
+    pips+=" $line"
+done < "$filename"
+
 #linux-image-3.16.0-4-amd64
 
 chroot $HOME/live_boot/chroot  /bin/bash -c "uname -a; \
 sleep 3; \
 echo debian-live-amd64 > /etc/hostname; \
 apt-get update; \
-apt-get install  --yes --force-yes $packages;apt-get install  --yes --force-yes linux-image-3.16.0-4-amd64; apt-get clean"
+apt-get install  --yes --force-yes $packages;apt-get install  --yes --force-yes linux-image-3.16.0-4-amd64; apt-get clean;pip install $pips"
 
 mkdir -p $HOME/live_boot/image/{live,isolinux}
 
