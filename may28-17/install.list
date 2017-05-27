@@ -35,4 +35,8 @@ python-requests
 python-scipy
 libopencv-dev 
 python-opencv
+xserver-xorg-core 
+xserver-xorg
 xfce4
+xfce4-goodies
+task-xfce-desktop
