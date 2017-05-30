@@ -1,0 +1,23 @@
+live-boot  network-manager net-tools wireless-tools wpagui tcpdump wget openssh-client 
+xorg xserver-xorg-core xserver-xorg xinit xterm pciutils usbutils gparted ntfs-3g hfsprogs rsync dosfstools 
+syslinux partclone nano pv rtorrent iceweasel chntpw
+curl firefox-esr python python-pip
+lightdm lxde-core lxtask
+console-data console-setup console-common
+dnsmasq nfs-kernel-server nfs-common tftpd-hpa xinetd ssh
+dialog rsync fping geeqie pssh lm-sensors
+xsensors gnuplot qtiplot xpdf csh tcsh ksh bc rar unrar
+gparted zip unzip dsh debootstrap syslinux pxelinux live-build
+etherwake beep debconf-utils arno-iptables-firewall
+octave octave-info octave-doc 
+libopenmpi-dev openmpi-bin openmpi-doc
+dynare dynare-doc gretl gretl-data gretl-doc gretl-common
+ganglia-monitor gmetad libganglia1 ganglia-webfrontend
+librrds-perl librrd2-dev firefox-esr
+apache2 php5 rrdtool php5-gd
+python-dev python-django python-matplotlib python-numpy
+python-pandas python-requests python-scipy
+libopencv-dev python-opencv
+ipython python-mpmath python-gmpy python-mpi4py
+xserver-xorg-input-kbd
+

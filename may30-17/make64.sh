@@ -11,11 +11,6 @@ mkdir $HOME/live_boot
 debootstrap  --arch=amd64  --variant=minbase  jessie $HOME/live_boot/chroot http://ftp.us.debian.org/debian/
 
 
-default_password=debian
-pass=`makepasswd --clearfrom=- --crypt-md5 <<< $default_password | cut -b 10-100`
-sed -i -e  "s,^root:[^:]\+:,root:$pass:," $HOME/live_boot/chroot/etc/shadow
-
-
 #auto login
 cp configs/getty@.service  $HOME/live_boot/chroot/lib/systemd/system/getty@.service
 
@@ -33,16 +28,23 @@ echo "fi" >> $HOME/live_boot/chroot/etc/profile
 echo "[ -z \$DISPLAY  ] && exec startx" >> $HOME/live_boot/chroot/etc/profile
 
 
-
 #installing linux image and install.list
-chroot $HOME/live_boot/chroot  /bin/bash -c "uname -a; \
-echo debian-live-amd64 > /etc/hostname; echo 'nameserver 8.8.8.8' > /etc/resolv.conf \
+chroot $HOME/live_boot/chroot  /bin/bash -c "echo debian-live-amd64 > /etc/hostname; echo 'nameserver 8.8.8.8' > /etc/resolv.conf \
 apt-get update; apt-get install  --yes --force-yes linux-image-3.16.0-4-amd64"
+
+#setting user password using chpasswd
+read PASSWORD < configs/pass
+chroot $HOME/live_boot/chroot  /bin/bash -c "echo root:$PASSWORD | /usr/sbin/chpasswd"
 
 #reading install.list
 filename="install.list"
 while read -r line
 do
+    #messages to confirm
+    echo "\n=========================================\n"
+    echo "apt-get install  --yes --force-yes $line"
+    echo "\n=========================================\n"
+    sleep 3
     chroot $HOME/live_boot/chroot  /bin/bash -c "apt-get install  --yes --force-yes $line"
 done < "$filename"
 
