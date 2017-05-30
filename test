@@ -1,0 +1,3 @@
+#auto login and startx
+echo "NO_PASSWORD_CONSOLE tty1:tty2:tty3:tty4:tty5:tty6" > $HOME/live_boot/chroot/etc/login.defs
+echo "[[ -z \$DISPLAY && \$XDG_VTNR -eq 7 ]] && exec startx" >> $HOME/live_boot/chroot/root/.bashrc
